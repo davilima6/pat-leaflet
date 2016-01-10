@@ -22,9 +22,7 @@ require.config({
     }
 });
 
-require(["pat-registry", "pat-leaflet"], function(registry, pattern) {
-    // your pattern is found via it's name in the filesystem, starting from the
-    // requireJS baseUrl option: "pat-leaflet"
+require(["jquery", "pat-registry", "pat-leaflet"], function($, registry, pattern) {
     window.patterns = registry;
     $(document).ready(function() {
         registry.init();

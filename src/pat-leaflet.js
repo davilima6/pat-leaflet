@@ -1,7 +1,5 @@
 (function (root, factory) {
-    // We use AMD (Asynchronous Module Definition) or browser globals to create
-    // this module.
-    if (typeof define === 'function' && define.amd) {
+    if (typeof define === "function" && define.amd) {
         define([
             "jquery",
             "pat-base",
@@ -17,17 +15,12 @@
         factory($, patterns.Base, patterns, patterns.Parser, patterns.logger);
     }
 }(this, function($, Base, registry, Parser, logger) {
-    'use strict';
+    "use strict";
 
     var log = logger.getLogger("pat-leaflet");
-    /* For logging, you can call log.debug, log.info, log.warn, log.error and log.fatal.
-     *
-     * For more information on how to use the logger and how to view log messages, please read:
-     * https://github.com/Patternslib/logging
-     */
     log.debug("pattern loaded");
 
-    var parser = new Parser('leaflet');
+    var parser = new Parser("leaflet");
     /* If you'd like your pattern to be configurable via the
      * data-pat-leaflet attribute, then you need to
      * specify the available arguments here, by calling parser.addArgument.
@@ -48,24 +41,11 @@
     parser.addArgument("text", "Patternslib pat-leaflet demo with default options.");
 
     return Base.extend({
-        /* The name is used to store the pattern in a registry and needs to be
-         * unique.
-         */
-        name: 'leaflet',
-        /* The trigger specifies the selector (CSS or jQuery) which Patternslib
-         * will scan for in order to identifiy and initialize this pattern.
-         */
+        name: "leaflet",
         trigger: ".pat-leaflet",
 
         init: function initUndefined () {
             this.options = parser.parse(this.$el);
-            /* this.options will now contain the configured pattern properties
-             * you've registered with the parser.addArgument method.
-             *
-             * If the user provided any values via the data-pat-leaflet
-             * attribute, those values will already be set.
-             */
-            // Just for the demo, do something:
             this.$el.html(this.options.text);
             log.debug("pattern initialized");
         }
