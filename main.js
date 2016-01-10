@@ -1,8 +1,8 @@
 require.config({
     baseUrl: "src",
     paths: {
-        // Add any other dependencies here. For external libraries, also add
-        // them to bower.json
+        "Leaflet": "bower_components/leaflet/dist/leaflet-src",
+        // BASE DEPENDENCIES
         "jquery":                       "bower_components/jquery/dist/jquery",
         "jquery.browser":               "bower_components/jquery.browser/dist/jquery.browser",
         "logging":                      "bower_components/logging/src/logging",
