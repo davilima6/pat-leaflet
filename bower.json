@@ -1,0 +1,24 @@
+{
+  "name": "pat-leaflet",
+  "description": "Patternslib Leaflet integration",
+  "version": "1.0.0",
+  "devDependencies": {},
+  "dependencies": {
+    "patternslib": "master",
+    "leaflet": "0.7.7",
+    "jquery": ""
+  },
+  "resolutions": {},
+  "keywords": [
+    "patternslib",
+    "pattern",
+    "leaflet",
+    "map",
+    "geo"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ]
+}
