@@ -12,7 +12,8 @@
     "leaflet-providers": "1.1.7",
     "L.GeoSearch": "git@github.com:smeijer/L.GeoSearch.git#master",
     "Leaflet.awesome-markers": "2.0.2",
-    "leaflet.locatecontrol": "0.45.1"
+    "leaflet.locatecontrol": "0.45.1",
+    "leaflet-MiniMap": "3.0.0"
   },
   "resolutions": {
     "jquery": "2.2.0"

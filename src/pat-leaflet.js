@@ -13,7 +13,8 @@
             "L.geosearch.esri",
             "L.markercluster",
             "L.awesomemarkers",
-            "L.locatecontrol"
+            "L.locatecontrol",
+            "L.minimap"
         ], function() {
             return factory.apply(this, arguments);
         });
@@ -39,6 +40,7 @@
     
     parser.addArgument("locatecontrol", true);
     parser.addArgument("autolocatecontrol", false);
+    parser.addArgument("minimap", false);
 
     parser.addArgument("fullscreencontrol", true);
     parser.addArgument("image_path", "src/bower_components/Leaflet.awesome-markers/dist/images");
@@ -92,6 +94,10 @@
                     [this.options.latitude, this.options.longitude],
                     this.options.zoom
                 );
+            }
+
+            if (this.options.minimap) {
+                var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik")).addTo(this.map);
             }
 
             if (this.options.locatecontrol || this.options.autolocatecontrol) {
