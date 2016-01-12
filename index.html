@@ -17,8 +17,19 @@
   </head>
   <body role="document">
 
-    <h1>pat-leaflet demo - simple</h1>
-    <div class="pat-leaflet" data-pat-leaflet='{"minimap": true}'></div>
+    <h1>pat-leaflet demo - minimal</h1>
+    <div class="pat-leaflet" data-pat-leaflet='
+    {
+      "fullscreencontrol": false,
+      "locatecontrol": false,
+      "zoomcontrol": false
+    }'></div>
+
+    <h1>pat-leaflet demo - full</h1>
+    <div class="pat-leaflet" data-pat-leaflet='
+    {
+      "minimap": true
+    }'></div>
 
     <h1>pat-leaflet demo - multiple points with clustermarker</h1>
     <div class="pat-leaflet"

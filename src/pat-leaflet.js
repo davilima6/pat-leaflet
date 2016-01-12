@@ -37,12 +37,17 @@
     parser.addArgument("latitude", "0.0");
     parser.addArgument("longitude", "0.0");
     parser.addArgument("zoom", "1");
-    
+
+    // default controls
+    parser.addArgument("fullscreencontrol", true);
     parser.addArgument("locatecontrol", true);
-    parser.addArgument("autolocatecontrol", false);
+    parser.addArgument("zoomcontrol", true);
+
+    // disabled controls
+    parser.addArgument("autolocate", false);
     parser.addArgument("minimap", false);
 
-    parser.addArgument("fullscreencontrol", true);
+
     parser.addArgument("image_path", "src/bower_components/Leaflet.awesome-markers/dist/images");
 
     parser.addArgument("editable", false);
@@ -65,7 +70,8 @@
 
             // MAP INIT
             this.map = new L.Map(this.$el[0], {
-                fullscreenControl: this.options.fullscreencontrol
+                fullscreenControl: this.options.fullscreencontrol,
+                zoomControl: this.options.zoomcontrol
             });
 
             L.Icon.Default.imagePath = this.options.image_path;
@@ -100,9 +106,9 @@
                 var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik")).addTo(this.map);
             }
 
-            if (this.options.locatecontrol || this.options.autolocatecontrol) {
+            if (this.options.locatecontrol || this.options.autolocate) {
                 var locatecontrol = L.control.locate({icon: "fa fa-crosshairs"}).addTo(this.map);
-                if (this.options.autolocatecontrol) {
+                if (this.options.autolocate) {
                     locatecontrol.start();
                 }
             }
