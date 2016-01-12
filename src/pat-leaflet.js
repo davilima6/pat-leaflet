@@ -60,7 +60,7 @@
         map: undefined,
 
         init: function initUndefined () {
-            this.options = parser.parse(this.$el);
+            var options = this.options = parser.parse(this.$el);
 
             var baseLayers,
                 geopoints,
@@ -69,12 +69,12 @@
                 geosearch;
 
             // MAP INIT
-            this.map = new L.Map(this.$el[0], {
-                fullscreenControl: this.options.fullscreencontrol,
-                zoomControl: this.options.zoomcontrol
+            var map = this.map = new L.Map(this.$el[0], {
+                fullscreenControl: options.fullscreencontrol,
+                zoomControl: options.zoomcontrol,
             });
 
-            L.Icon.Default.imagePath = this.options.image_path;
+            L.Icon.Default.imagePath = options.image_path;
 
             // Layers
             baseLayers = {
@@ -83,40 +83,40 @@
                 "Topographic": L.tileLayer.provider("OpenTopoMap"),
                 "Toner": L.tileLayer.provider("Stamen.Toner")
             };
-            baseLayers.Map.addTo(this.map); // default map
-            L.control.layers(baseLayers).addTo(this.map);
+            baseLayers.Map.addTo(map); // default map
+            L.control.layers(baseLayers).addTo(map);
 
             // ADD MARKERS
             geopoints = this.$el.data().geopoints;
             if (geopoints) {
-                markers = this.create_markers(geopoints, this.options.editable);
-                this.map.addLayer(markers);
+                markers = this.create_markers(geopoints, options.editable);
+                map.addLayer(markers);
 
                 // autozoom
                 bounds = markers.getBounds();
-                this.map.fitBounds(bounds);
+                map.fitBounds(bounds);
             } else {
-                this.map.setView(
-                    [this.options.latitude, this.options.longitude],
-                    this.options.zoom
+                map.setView(
+                    [options.latitude, options.longitude],
+                    options.zoom
                 );
             }
 
-            if (this.options.minimap) {
-                var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik")).addTo(this.map);
+            if (options.minimap) {
+                var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik")).addTo(map);
             }
 
-            if (this.options.locatecontrol || this.options.autolocate) {
-                var locatecontrol = L.control.locate({icon: "fa fa-crosshairs"}).addTo(this.map);
-                if (this.options.autolocate) {
+            if (options.locatecontrol || options.autolocate) {
+                var locatecontrol = L.control.locate({icon: "fa fa-crosshairs"}).addTo(map);
+                if (options.autolocate) {
                     locatecontrol.start();
                 }
             }
 
-            if (this.options.editable) {
-                this.map.on("geosearch_showlocation", function(e) {
+            if (options.editable) {
+                map.on("geosearch_showlocation", function(e) {
                     if (markers) {
-                        this.map.removeLayer(markers);
+                        map.removeLayer(markers);
                     }
                     var coords = e.Location;
                     this.update_inputs(coords.Y, coords.X);
@@ -126,12 +126,12 @@
                 // GEOSEARCH
                 geosearch = new L.Control.GeoSearch({
                     showMarker: true,
-                    draggable: this.options.editable,
+                    draggable: options.editable,
                     provider: new L.GeoSearch.Provider.Esri()
                     //provider: new L.GeoSearch.Provider.Google()
                     //provider: new L.GeoSearch.Provider.OpenStreetMap()
                 });
-                geosearch.addTo(this.map);
+                geosearch.addTo(map);
             }
 
             log.debug("pattern initialized");
