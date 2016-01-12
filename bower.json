@@ -4,9 +4,17 @@
   "version": "1.0.0",
   "devDependencies": {},
   "dependencies": {
+    "jquery": "",
     "patternslib": "master",
     "leaflet": "0.7.7",
-    "jquery": ""
+    "leaflet.markercluster": "0.4",
+    "Leaflet.fullscreen": "git@github.com:Leaflet/Leaflet.fullscreen#v0.0.4",
+    "leaflet-providers": "1.1.7",
+    "L.GeoSearch": "git@github.com:smeijer/L.GeoSearch.git#master",
+    "Leaflet.awesome-markers": "2.0.2"
+  },
+  "resolutions": {
+    "jquery": "2.2.0"
   },
   "keywords": [
     "patternslib",
@@ -15,7 +23,7 @@
     "map",
     "geo"
   ],
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "ignore": [
     "node_modules",
     "bower_components"

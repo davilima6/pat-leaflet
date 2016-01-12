@@ -11,10 +11,12 @@
     "white": false,
     "quotmark": "double",
     "predef": [
+        "$",
         "Markdown",
         "Modernizr",
         "define",
         "module",
+        "patterns",
         "require",
         "requirejs",
         "tinyMCE"
