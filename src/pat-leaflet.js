@@ -32,6 +32,10 @@
 
     var parser = new Parser("leaflet");
 
+    parser.addArgument("latitude", "0.0");
+    parser.addArgument("longitude", "0.0");
+    parser.addArgument("zoom", "1");
+
     parser.addArgument("fullscreencontrol", true);
     parser.addArgument("image_path", "src/bower_components/Leaflet.awesome-markers/dist/images");
 
@@ -79,6 +83,11 @@
                 // autozoom
                 bounds = markers.getBounds();
                 this.map.fitBounds(bounds);
+            } else {
+                this.map.setView(
+                    [this.options.latitude, this.options.longitude],
+                    this.options.zoom
+                );
             }
 
             if (this.options.editable) {
