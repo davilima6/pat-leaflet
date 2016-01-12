@@ -21,7 +21,8 @@ module.exports = function(grunt) {
                     "src/bower_components/leaflet.markercluster/dist/leaflet.markercluster-src.js",
                     "src/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js",
                     "src/bower_components/leaflet.locatecontrol/src/L.Control.Locate.js",
-                    "src/bower_components/leaflet-MiniMap/dist/Control.MiniMap.min.js"
+                    "src/bower_components/leaflet-MiniMap/dist/Control.MiniMap.min.js",
+                    "src/bower_components/Leaflet.Sleep/Leaflet.Sleep.js"
                 ],
                 dest: dest_path + "libs.js"
             },

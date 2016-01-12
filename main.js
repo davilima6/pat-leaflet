@@ -10,6 +10,7 @@ require.config({
         "L.awesomemarkers":  "bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers",
         "L.locatecontrol":   "bower_components/leaflet.locatecontrol/src/L.Control.Locate",
         "L.minimap":         "bower_components/leaflet-MiniMap/dist/Control.MiniMap.min",
+        "L.sleep":           "bower_components/Leaflet.Sleep/Leaflet.Sleep",
         // BASE DEPENDENCIES
         "jquery":            "bower_components/jquery/dist/jquery",
         "jquery.browser":    "bower_components/jquery.browser/dist/jquery.browser",

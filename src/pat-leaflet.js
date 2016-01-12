@@ -14,7 +14,8 @@
             "L.markercluster",
             "L.awesomemarkers",
             "L.locatecontrol",
-            "L.minimap"
+            "L.minimap",
+            "L.sleep"
         ], function() {
             return factory.apply(this, arguments);
         });
@@ -72,6 +73,11 @@
             var map = this.map = new L.Map(this.$el[0], {
                 fullscreenControl: options.fullscreencontrol,
                 zoomControl: options.zoomcontrol,
+                // Leaflet.Sleep options
+                sleep: true,
+                sleepNote: false,
+                hoverToWake: false,
+                sleepOpacity: 1
             });
 
             L.Icon.Default.imagePath = options.image_path;
