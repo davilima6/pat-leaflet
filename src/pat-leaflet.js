@@ -12,7 +12,8 @@
             "L.geosearch",
             "L.geosearch.esri",
             "L.markercluster",
-            "L.awesomemarkers"
+            "L.awesomemarkers",
+            "L.locatecontrol"
         ], function() {
             return factory.apply(this, arguments);
         });
@@ -35,6 +36,9 @@
     parser.addArgument("latitude", "0.0");
     parser.addArgument("longitude", "0.0");
     parser.addArgument("zoom", "1");
+    
+    parser.addArgument("locatecontrol", true);
+    parser.addArgument("autolocatecontrol", false);
 
     parser.addArgument("fullscreencontrol", true);
     parser.addArgument("image_path", "src/bower_components/Leaflet.awesome-markers/dist/images");
@@ -88,6 +92,13 @@
                     [this.options.latitude, this.options.longitude],
                     this.options.zoom
                 );
+            }
+
+            if (this.options.locatecontrol || this.options.autolocatecontrol) {
+                var locatecontrol = L.control.locate({icon: "fa fa-crosshairs"}).addTo(this.map);
+                if (this.options.autolocatecontrol) {
+                    locatecontrol.start();
+                }
             }
 
             if (this.options.editable) {

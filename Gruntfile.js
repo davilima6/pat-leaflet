@@ -19,7 +19,8 @@ module.exports = function(grunt) {
                     "src/bower_components/L.GeoSearch/src/js/l.control.geosearch.js",
                     "src/bower_components/L.GeoSearch/src/js/l.geosearch.provider.esri.js",
                     "src/bower_components/leaflet.markercluster/dist/leaflet.markercluster-src.js",
-                    "src/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"
+                    "src/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js",
+                    "src/bower_components/leaflet.locatecontrol/src/L.Control.Locate.js"
                 ],
                 dest: dest_path + "libs.js"
             },
@@ -30,7 +31,9 @@ module.exports = function(grunt) {
                     "src/bower_components/L.GeoSearch/src/css/l.geosearch.css",
                     "src/bower_components/leaflet.markercluster/dist/MarkerCluster.Default.css",
                     "src/bower_components/leaflet.markercluster/dist/MarkerCluster.css",
-                    "src/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css"
+                    "src/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css",
+                    "src/bower_components/leaflet.locatecontrol/dist/L.Control.Locate.css",
+                    "src/bower_components/font-awesome/css/font-awesome.css"
                 ],
                 dest: dest_path + "libs.css"
             }
@@ -68,6 +71,11 @@ module.exports = function(grunt) {
                     cwd: "src/bower_components/Leaflet.awesome-markers/dist/images/",
                     src: ["*.png"],
                     dest: dest_path + "images/"
+                }, {
+                    expand: true,
+                    cwd: "src/bower_components/font-awesome/fonts/",
+                    src: ["**"],
+                    dest: dest_path + "fonts/"
                 }]
             }
         },
@@ -83,6 +91,11 @@ module.exports = function(grunt) {
                 pattern: "fullscreen@2x.png",
                 replacement: "images/fullscreen@2x.png"
             },
+            "fontawesome": {
+                path: dest_path + "libs.css",
+                pattern: "../fonts/fontawesome",
+                replacement: "fonts/fontawesome"
+            }
         }
 
     });

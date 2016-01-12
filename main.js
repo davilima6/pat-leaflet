@@ -8,6 +8,7 @@ require.config({
         "L.geosearch.esri":  "bower_components/L.GeoSearch/src/js/l.geosearch.provider.esri",
         "L.markercluster":   "bower_components/leaflet.markercluster/dist/leaflet.markercluster-src",
         "L.awesomemarkers":  "bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers",
+        "L.locatecontrol":   "bower_components/leaflet.locatecontrol/src/L.Control.Locate",
         // BASE DEPENDENCIES
         "jquery":            "bower_components/jquery/dist/jquery",
         "jquery.browser":    "bower_components/jquery.browser/dist/jquery.browser",

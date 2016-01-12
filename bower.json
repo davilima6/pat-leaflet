@@ -11,7 +11,8 @@
     "Leaflet.fullscreen": "git@github.com:Leaflet/Leaflet.fullscreen#v0.0.4",
     "leaflet-providers": "1.1.7",
     "L.GeoSearch": "git@github.com:smeijer/L.GeoSearch.git#master",
-    "Leaflet.awesome-markers": "2.0.2"
+    "Leaflet.awesome-markers": "2.0.2",
+    "leaflet.locatecontrol": "0.45.1"
   },
   "resolutions": {
     "jquery": "2.2.0"
