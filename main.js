@@ -29,9 +29,12 @@ require.config({
     "shim": {
         "L.fullscreen": { deps: ["leaflet"] },
         "L.geosearch": { deps: ["leaflet"] },
-        "L.geosearch.esri": { deps: ["leaflet"] },
+        "L.geosearch.esri": { deps: ["L.geosearch"] },
         "L.markercluster": { deps: ["leaflet"] },
         "L.awesomemarkers": { deps: ["leaflet"] },
+        "L.locatecontrol": { deps: ["leaflet"] },
+        "L.minimap": { deps: ["leaflet"] },
+        "L.sleep": { deps: ["leaflet"] },
         "logging": { "exports": "logging" }
     },
     wrapShim: true
