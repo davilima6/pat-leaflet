@@ -13,7 +13,7 @@
     "L.GeoSearch": "git@github.com:smeijer/L.GeoSearch.git#master",
     "Leaflet.awesome-markers": "2.0.2",
     "leaflet.locatecontrol": "0.45.1",
-    "leaflet-MiniMap": "3.0.0",
+    "leaflet-MiniMap": "https://github.com/thet/Leaflet-MiniMap.git#master",
     "Leaflet.Sleep": "https://github.com/CliffCloud/Leaflet.Sleep.git#master"
   },
   "resolutions": {

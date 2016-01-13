@@ -109,7 +109,7 @@
             }
 
             if (options.minimap) {
-                var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik")).addTo(map);
+                var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik"), {}, {sleep: false}).addTo(map);
             }
 
             if (options.locatecontrol || options.autolocate) {
