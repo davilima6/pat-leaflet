@@ -48,6 +48,13 @@
     parser.addArgument("autolocate", false);
     parser.addArgument("minimap", false);
 
+    // map layers
+    parser.addArgument("map_layers", [
+        {"title": "Map", "id": "OpenStreetMap.Mapnik"},
+        {"title": "Satellite", "id": "Esri.WorldImagery"},
+        {"title": "Topographic", "id": "OpenTopoMap"},
+        {"title": "Toner", "id": "Stamen.Toner"}
+    ]);
 
     parser.addArgument("image_path", "src/bower_components/Leaflet.awesome-markers/dist/images");
 
@@ -83,14 +90,20 @@
             L.Icon.Default.imagePath = options.image_path;
 
             // Layers
-            baseLayers = {
-                "Map": L.tileLayer.provider("OpenStreetMap.Mapnik"),
-                "Satellite": L.tileLayer.provider("Esri.WorldImagery"),
-                "Topographic": L.tileLayer.provider("OpenTopoMap"),
-                "Toner": L.tileLayer.provider("Stamen.Toner")
-            };
-            baseLayers.Map.addTo(map); // default map
-            L.control.layers(baseLayers).addTo(map);
+            // Must be an array
+            if ($.isArray(options.map_layers)) {
+                baseLayers = {};
+                for (var cnt = 0; cnt < options.map_layers.length; cnt++) {
+                    // build layers object with tileLayer instances
+                    baseLayers[options.map_layers[cnt].title] = L.tileLayer.provider(options.map_layers[cnt].id);
+                    if (cnt===0) {
+                        baseLayers[options.map_layers[cnt].title].addTo(map); // default map
+                    }
+                }
+                if (options.map_layers.length > 1) {
+                    L.control.layers(baseLayers).addTo(map);
+                }
+            }
 
             // ADD MARKERS
             geopoints = this.$el.data().geopoints;
