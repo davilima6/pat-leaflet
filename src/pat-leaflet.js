@@ -195,13 +195,19 @@
         },
 
         red_marker: L.AwesomeMarkers.icon({
-            markerColor: "red"
+            markerColor: "red",
+            prefix: "fa",
+            icon: "circle"
         }),
         green_marker: L.AwesomeMarkers.icon({
-            markerColor: "green"
+            markerColor: "green",
+            prefix: "fa",
+            icon: "circle"
         }),
         blue_marker: L.AwesomeMarkers.icon({
-            markerColor: "blue"
+            markerColor: "blue",
+            prefix: "fa",
+            icon: "circle"
         }),
 
         update_inputs: function(lat, lng) {
