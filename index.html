@@ -17,7 +17,7 @@
   </head>
   <body role="document">
 
-    <h1>pat-leaflet demo - minimal</h1>
+    <!--h1>pat-leaflet demo - minimal</h1>
     <div id="map1" class="pat-leaflet" data-pat-leaflet='
     {
       "fullscreencontrol": false,
@@ -30,30 +30,60 @@
     <div id="map2" class="pat-leaflet" data-pat-leaflet='
     {
       "minimap": true
-    }'></div>
+    }'></div-->
 
     <h1>pat-leaflet demo - multiple points with clustermarker</h1>
     <div id="map3" class="pat-leaflet"
-        data-pat-leaflet='{"locatecontrol": false}'
-        data-geopoints='[
+        data-pat-leaflet='{"locatecontrol": false, "geosearch": true}'
+        data-geojson='{
+"type": "FeatureCollection",
+"features": [
     {
-        "lat": 55.69078,
-        "lng": 12.55568,
-        "popup": "reverse - copenhagen international poetry festival (dnk), copenhagen, denmark"
+        "type": "Feature",
+        "id": 1,
+        "properties": {
+            "popup": "reverse - copenhagen international poetry festival (dnk), copenhagen, denmark",
+            "editable": true
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                12.55568,
+                55.69078
+            ]
+        }
     },
     {
-        "lat": 47.0708101,
-        "lng": 15.4382918,
-        "popup": "hoergeREDE (aut), graz, austria"
+        "type": "Feature",
+        "id": 2,
+        "properties": {
+          "popup": "hoergeREDE (aut), graz, austria"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                15.4382918,
+                47.0708101
+            ]
+        }
     },
     {
-        "lat": 43.8514981,
-        "lng": 18.3886134,
-        "popup": "sarajevo days of poetry (bih), sarajevo, bosnia"
+        "type": "Feature",
+        "id": 3,
+        "properties": {
+          "popup": "sarajevo days of poetry (bih), sarajevo, bosnia"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                18.3886134,
+                43.8514981
+            ]
+        }
     }
-]'></div>
+]}'></div>
 
-    <h1>pat-leaflet demo - input widget</h1>
-    <div id="map4" class="pat-leaflet"></div>
+    <!--h1>pat-leaflet demo - input widget</h1>
+    <div id="map4" class="pat-leaflet"></div-->
   </body>
 </html>

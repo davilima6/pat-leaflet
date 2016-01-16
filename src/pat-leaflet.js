@@ -71,8 +71,9 @@
             var options = this.options = parser.parse(this.$el);
 
             var baseLayers,
-                geopoints,
-                markers,
+                geojson,
+                marker_cluster,
+                marker_layer,
                 bounds,
                 geosearch;
 
@@ -119,13 +120,25 @@
             }
 
             // ADD MARKERS
-            geopoints = this.$el.data().geopoints;
-            if (geopoints) {
-                markers = this.create_markers(geopoints, options.editable);
-                map.addLayer(markers);
+            geojson = this.$el.data().geojson;
+            if (geojson) {
+                marker_cluster = new L.MarkerClusterGroup();
+                marker_layer = L.geoJson(geojson, {
+                    pointToLayer: function(feature, latlng) {
+                        return L.marker(latlng, {
+                            icon: this.green_marker,
+                            draggable: feature.properties.editable
+                        });
+                    }.bind(this),
+                    onEachFeature: function(feature, layer) {
+                        layer.bindPopup(feature.properties.popup);
+                    }
+                });
+                marker_cluster.addLayer(marker_layer);
+                map.addLayer(marker_cluster);
 
                 // autozoom
-                bounds = markers.getBounds();
+                bounds = marker_cluster.getBounds();
                 map.fitBounds(bounds);
             } else {
                 map.setView(
@@ -136,8 +149,8 @@
 
             if (options.editable) {
                 map.on("geosearch_showlocation", function(e) {
-                    if (markers) {
-                        map.removeLayer(markers);
+                    if (marker_cluster) {
+                        map.removeLayer(marker_cluster);
                     }
                     var coords = e.Location;
                     this.update_inputs(coords.Y, coords.X);
