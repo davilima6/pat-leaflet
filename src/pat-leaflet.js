@@ -89,6 +89,19 @@
 
             L.Icon.Default.imagePath = options.image_path;
 
+            // Locatecontrol
+            if (options.locatecontrol || options.autolocate) {
+                var locatecontrol = L.control.locate({icon: "fa fa-crosshairs"}).addTo(map);
+                if (options.autolocate) {
+                    locatecontrol.start();
+                }
+            }
+
+            // Minimap
+            if (options.minimap) {
+                var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik"), {toggleDisplay: true, mapOptions: {sleep: false}}).addTo(map);
+            }
+
             // Layers
             // Must be an array
             if ($.isArray(options.map_layers)) {
@@ -119,17 +132,6 @@
                     [options.latitude, options.longitude],
                     options.zoom
                 );
-            }
-
-            if (options.minimap) {
-                var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik"), {toggleDisplay: true, mapOptions: {sleep: false}}).addTo(map);
-            }
-
-            if (options.locatecontrol || options.autolocate) {
-                var locatecontrol = L.control.locate({icon: "fa fa-crosshairs"}).addTo(map);
-                if (options.autolocate) {
-                    locatecontrol.start();
-                }
             }
 
             if (options.editable) {
