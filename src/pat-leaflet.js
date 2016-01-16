@@ -10,7 +10,10 @@
             "L.fullscreen",
             "L.providers",
             "L.geosearch",
+            "L.geosearch.bing",
             "L.geosearch.esri",
+            "L.geosearch.google",
+            "L.geosearch.openstreetmap",
             "L.markercluster",
             "L.awesomemarkers",
             "L.locatecontrol",
@@ -24,7 +27,9 @@
         // global variables are available.
         factory($, patterns.Base, patterns, patterns.Parser, patterns.logger,
             patterns.Leaflet, patterns.L.fullscreen, patterns.L.providers,
-            patterns.L.geosearch, patterns.L.geosearch.esri,
+            patterns.L.geosearch, patterns.L.geosearch.bing,
+            patterns.L.geosearch.esri, patterns.L.geosearch.google,
+            patterns.L.geosearch.openstreetmap,
             patterns.L.markercluster, patterns.L.awesomemarkers);
     }
 }(this, function($, Base, registry, Parser, logger, L) {
@@ -47,6 +52,8 @@
     // disabled controls
     parser.addArgument("autolocate", false);
     parser.addArgument("minimap", false);
+    parser.addArgument("geosearch", false);
+    parser.addArgument("geosearch_provider", "openstreetmap");
 
     // map layers
     parser.addArgument("map_layers", [
@@ -147,6 +154,32 @@
                 );
             }
 
+            if (options.geosearch) {
+                var provider;
+                if (options.geosearch_provider === "esri") {
+                    provider = new L.GeoSearch.Provider.Esri();
+                } else if (options.geosearch_provider === "google") {
+                    provider = new L.GeoSearch.Provider.Google();
+                } else if (options.geosearch_provider === "bing") {
+                    provider = new L.GeoSearch.Provider.Bing();
+                } else {
+                    provider = new L.GeoSearch.Provider.OpenStreetMap();
+                }
+
+                // GEOSEARCH
+                geosearch = new L.Control.GeoSearch({
+                    showMarker: true,
+                    draggable: true,
+                    provider: provider
+                });
+                geosearch.addTo(map);
+
+                map.on("geosearch_showlocation", function(e) {
+                    e.Marker.setIcon(this.red_marker);
+                }.bind(this));
+
+            }
+
             if (options.editable) {
                 map.on("geosearch_showlocation", function(e) {
                     if (marker_cluster) {
@@ -156,23 +189,19 @@
                     this.update_inputs(coords.Y, coords.X);
                     this.bind_draggable_marker(e.Marker);
                 });
-
-                // GEOSEARCH
-                geosearch = new L.Control.GeoSearch({
-                    showMarker: true,
-                    draggable: options.editable,
-                    provider: new L.GeoSearch.Provider.Esri()
-                    //provider: new L.GeoSearch.Provider.Google()
-                    //provider: new L.GeoSearch.Provider.OpenStreetMap()
-                });
-                geosearch.addTo(map);
             }
 
             log.debug("pattern initialized");
         },
 
+        red_marker: L.AwesomeMarkers.icon({
+            markerColor: "red"
+        }),
         green_marker: L.AwesomeMarkers.icon({
             markerColor: "green"
+        }),
+        blue_marker: L.AwesomeMarkers.icon({
+            markerColor: "blue"
         }),
 
         update_inputs: function(lat, lng) {
