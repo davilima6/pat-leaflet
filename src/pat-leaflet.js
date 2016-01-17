@@ -137,9 +137,7 @@
                             draggable: feature.properties.editable
                         });
                     }.bind(this),
-                    onEachFeature: function(feature, layer) {
-                        layer.bindPopup(feature.properties.popup);
-                    }
+                    onEachFeature: this.bind_popup.bind(this),
                 });
                 marker_cluster.addLayer(marker_layer);
                 map.addLayer(marker_cluster);
@@ -176,6 +174,7 @@
 
                 map.on("geosearch_showlocation", function(e) {
                     e.Marker.setIcon(this.red_marker);
+                    this.bind_popup({properties: {editable: true, popup: "New Marker"}}, e.Marker).bind(this);
                 }.bind(this));
 
             }
@@ -192,6 +191,25 @@
             }
 
             log.debug("pattern initialized");
+        },
+
+        bind_popup: function(feature, marker) {
+            var popup = feature.properties.popup;
+            if (feature.properties.editable) {
+                // for editable markers add "delete marker" link to popup
+                popup = popup || "";
+                var $popup = $("<div>" + popup + "</div><br/>");
+                var $link = $("<a href='#' class='deleteMarker'>Delete Marker</a>");
+                $link.on("click", function (e) {
+                    e.preventDefault();
+                    this.map.removeLayer(marker);
+                }.bind(this));
+                marker.bindPopup(
+                    $("<div/>").append($popup).append($link)[0]
+                );
+            } else if (popup) {
+                marker.bindPopup(popup);
+            }
         },
 
         red_marker: L.AwesomeMarkers.icon({
