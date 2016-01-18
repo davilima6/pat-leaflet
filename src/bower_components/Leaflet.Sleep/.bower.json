@@ -1,0 +1,13 @@
+{
+  "name": "Leaflet.Sleep",
+  "homepage": "https://github.com/CliffCloud/Leaflet.Sleep",
+  "_release": "6525f68ce6",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "6525f68ce6ed468a1cd3eccad0273fcec1da7ca8"
+  },
+  "_source": "https://github.com/CliffCloud/Leaflet.Sleep.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/CliffCloud/Leaflet.Sleep.git"
+}
