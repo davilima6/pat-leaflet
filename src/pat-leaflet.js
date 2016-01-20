@@ -18,7 +18,8 @@
             "L.awesomemarkers",
             "L.locatecontrol",
             "L.minimap",
-            "L.sleep"
+            "L.sleep",
+            "L.simplemarkers"
         ], function() {
             return factory.apply(this, arguments);
         });
@@ -31,7 +32,8 @@
             patterns.L.geosearch.esri, patterns.L.geosearch.google,
             patterns.L.geosearch.openstreetmap,
             patterns.L.markercluster, patterns.L.awesomemarkers,
-            patterns.L.locatecontrol, patterns.L.minimap, patterns.L.sleep);
+            patterns.L.locatecontrol, patterns.L.minimap, patterns.L.sleep,
+            patterns.L.simplemarkers);
     }
 }(this, function($, Base, registry, Parser, logger, L) {
     "use strict";
@@ -55,6 +57,7 @@
     parser.addArgument("minimap", false);
     parser.addArgument("geosearch", false);
     parser.addArgument("geosearch_provider", "openstreetmap");
+    parser.addArgument("addmarker", false);
 
     // map layers
     parser.addArgument("map_layers", [
@@ -178,6 +181,20 @@
                     this.bind_popup({properties: {editable: true, popup: "New Marker"}}, e.Marker).bind(this);
                 }.bind(this));
 
+            }
+
+            if (options.addmarker) {
+                var add_marker_callback = function (marker) {
+                    this.bind_popup({properties: {editable: true}}, marker);
+                };
+                var addmarker = new L.Control.SimpleMarkers({
+                    delete_control: false,
+                    allow_popup: false,
+                    marker_icon: this.red_marker,
+                    marker_draggable: true,
+                    add_marker_callback: add_marker_callback.bind(this)
+                });
+                map.addControl(addmarker);
             }
 
             if (options.editable) {

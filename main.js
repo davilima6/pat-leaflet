@@ -14,6 +14,7 @@ require.config({
         "L.locatecontrol":   "bower_components/leaflet.locatecontrol/src/L.Control.Locate",
         "L.minimap":         "bower_components/Leaflet-MiniMap/dist/Control.MiniMap.min",
         "L.sleep":           "bower_components/Leaflet.Sleep/Leaflet.Sleep",
+        "L.simplemarkers":   "bower_components/Leaflet.SimpleMarkers/lib/Control.SimpleMarkers",
         // BASE DEPENDENCIES
         "jquery":            "bower_components/jquery/dist/jquery",
         "jquery.browser":    "bower_components/jquery.browser/dist/jquery.browser",
@@ -41,6 +42,7 @@ require.config({
         "L.locatecontrol": { deps: ["leaflet"] },
         "L.minimap": { deps: ["leaflet"] },
         "L.sleep": { deps: ["leaflet"] },
+        "L.simplemarkers": { deps: ["leaflet"] },
         "logging": { "exports": "logging" }
     },
     wrapShim: true

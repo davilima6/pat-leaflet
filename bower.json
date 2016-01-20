@@ -15,6 +15,7 @@
     "leaflet.locatecontrol": "0.45.1",
     "Leaflet-MiniMap": "https://github.com/Norkart/Leaflet-MiniMap.git#master",
     "Leaflet.Sleep": "https://github.com/CliffCloud/Leaflet.Sleep.git#master",
+    "Leaflet.SimpleMarkers": "https://github.com/thet/Leaflet.SimpleMarkers.git#master",
     "font-awesome": ""
   },
   "resolutions": {

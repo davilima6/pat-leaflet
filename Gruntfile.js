@@ -21,8 +21,9 @@ module.exports = function(grunt) {
                     "src/bower_components/leaflet.markercluster/dist/leaflet.markercluster-src.js",
                     "src/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js",
                     "src/bower_components/leaflet.locatecontrol/src/L.Control.Locate.js",
-                    "src/bower_components/leaflet-MiniMap/dist/Control.MiniMap.min.js",
-                    "src/bower_components/Leaflet.Sleep/Leaflet.Sleep.js"
+                    "src/bower_components/Leaflet-MiniMap/dist/Control.MiniMap.min.js",
+                    "src/bower_components/Leaflet.Sleep/Leaflet.Sleep.js",
+                    "src/bower_components/Leaflet.SimpleMarkers/lib/Control.SimpleMarkers.js"
                 ],
                 dest: dest_path + "libs.js"
             },
@@ -36,7 +37,8 @@ module.exports = function(grunt) {
                     "src/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css",
                     "src/bower_components/leaflet.locatecontrol/dist/L.Control.Locate.css",
                     "src/bower_components/font-awesome/css/font-awesome.css",
-                    "src/bower_components/leaflet-MiniMap/dist/Control.MiniMap.min.css"
+                    "src/bower_components/Leaflet-MiniMap/dist/Control.MiniMap.min.css",
+                    "src/bower_components/Leaflet.SimpleMarkers/lib/Control.SimpleMarkers.css"
                 ],
                 dest: dest_path + "libs.css"
             }
@@ -76,7 +78,7 @@ module.exports = function(grunt) {
                     dest: dest_path + "images/"
                 }, {
                     expand: true,
-                    cwd: "src/bower_components/leaflet-MiniMap/dist/images/",
+                    cwd: "src/bower_components/Leaflet-MiniMap/dist/images/",
                     src: ["**"],
                     dest: dest_path + "images/"
                 }, {

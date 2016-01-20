@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="src/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="src/bower_components/leaflet.locatecontrol/dist/L.Control.Locate.css"/>
     <link rel="stylesheet" href="src/bower_components/font-awesome/css/font-awesome.css"/>
-    <link rel="stylesheet" href="src/bower_components/leaflet-MiniMap/dist/Control.MiniMap.min.css"/>
+    <link rel="stylesheet" href="src/bower_components/Leaflet-MiniMap/dist/Control.MiniMap.min.css"/>
+    <link rel="stylesheet" href="src/bower_components/Leaflet.SimpleMarkers/lib/Control.SimpleMarkers.css"/>
     <link rel="stylesheet" href="src/pat-leaflet.css"/>
     <script data-main="main" src="src/bower_components/requirejs/require.js"></script>
   </head>
@@ -34,7 +35,7 @@
 
     <h1>pat-leaflet demo - multiple points with clustermarker</h1>
     <div id="map3" class="pat-leaflet"
-        data-pat-leaflet='{"locatecontrol": false, "geosearch": true, "geosearch_provider": "google"}'
+        data-pat-leaflet='{"locatecontrol": false, "geosearch": true, "geosearch_provider": "google", "addmarker": true}'
         data-geojson='{
 "type": "FeatureCollection",
 "features": [
