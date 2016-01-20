@@ -12,7 +12,7 @@ require.config({
         "L.markercluster":   "bower_components/leaflet.markercluster/dist/leaflet.markercluster-src",
         "L.awesomemarkers":  "bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers",
         "L.locatecontrol":   "bower_components/leaflet.locatecontrol/src/L.Control.Locate",
-        "L.minimap":         "bower_components/leaflet-MiniMap/dist/Control.MiniMap.min",
+        "L.minimap":         "bower_components/Leaflet-MiniMap/dist/Control.MiniMap.min",
         "L.sleep":           "bower_components/Leaflet.Sleep/Leaflet.Sleep",
         // BASE DEPENDENCIES
         "jquery":            "bower_components/jquery/dist/jquery",

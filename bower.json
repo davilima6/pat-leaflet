@@ -13,7 +13,7 @@
     "L.GeoSearch": "git@github.com:smeijer/L.GeoSearch.git#master",
     "Leaflet.awesome-markers": "2.0.2",
     "leaflet.locatecontrol": "0.45.1",
-    "leaflet-MiniMap": "https://github.com/Norkart/Leaflet-MiniMap.git#master",
+    "Leaflet-MiniMap": "https://github.com/Norkart/Leaflet-MiniMap.git#master",
     "Leaflet.Sleep": "https://github.com/CliffCloud/Leaflet.Sleep.git#master",
     "font-awesome": ""
   },
