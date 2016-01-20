@@ -1,0 +1,13 @@
+{
+  "name": "Leaflet.SimpleMarkers",
+  "homepage": "https://github.com/thet/Leaflet.SimpleMarkers",
+  "_release": "effd6cd093",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "effd6cd093688fb486e9320249e5416adc903d18"
+  },
+  "_source": "https://github.com/thet/Leaflet.SimpleMarkers.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/thet/Leaflet.SimpleMarkers.git"
+}
