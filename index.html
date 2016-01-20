@@ -18,7 +18,7 @@
   </head>
   <body role="document">
 
-    <!--h1>pat-leaflet demo - minimal</h1>
+    <h1>pat-leaflet demo - minimal</h1>
     <div id="map1" class="pat-leaflet" data-pat-leaflet='
     {
       "fullscreencontrol": false,
@@ -27,15 +27,21 @@
       "map_layers": [{"title": "Map", "id": "OpenStreetMap.Mapnik"}]
     }'></div>
 
-    <h1>pat-leaflet demo - full</h1>
-    <div id="map2" class="pat-leaflet" data-pat-leaflet='
-    {
-      "minimap": true
-    }'></div-->
+    <pre>
+&lt;div id=&quot;map1&quot; class=&quot;pat-leaflet&quot; data-pat-leaflet=' { &quot;fullscreencontrol&quot;: false, &quot;locatecontrol&quot;: false, &quot;zoomcontrol&quot;: false, &quot;map_layers&quot;: [{&quot;title&quot;: &quot;Map&quot;, &quot;id&quot;: &quot;OpenStreetMap.Mapnik&quot;}] }'&gt;&lt;/div&gt;
+    </pre>
 
-    <h1>pat-leaflet demo - multiple points with clustermarker</h1>
-    <div id="map3" class="pat-leaflet"
-        data-pat-leaflet='{"locatecontrol": false, "geosearch": true, "geosearch_provider": "google", "addmarker": true}'
+    <h1>pat-leaflet demo - full</h1>
+    <div id="map2" class="pat-leaflet"
+        data-pat-leaflet='{
+"fullscreencontrol": true,
+"locatecontrol": true,
+"zoomcontrol": true,
+"minimap": true,
+"geosearch": true,
+"geosearch_provider": "google",
+"addmarker": true
+}'
         data-geojson='{
 "type": "FeatureCollection",
 "features": [
@@ -84,7 +90,9 @@
     }
 ]}'></div>
 
-    <!--h1>pat-leaflet demo - input widget</h1>
-    <div id="map4" class="pat-leaflet"></div-->
+    <pre>
+&lt;div id=&quot;map2&quot; class=&quot;pat-leaflet&quot; data-pat-leaflet='{ &quot;fullscreencontrol&quot;: true, &quot;locatecontrol&quot;: true, &quot;zoomcontrol&quot;: true, &quot;minimap&quot;: true, &quot;geosearch&quot;: true, &quot;geosearch_provider&quot;: &quot;google&quot;, &quot;addmarker&quot;: true }' data-geojson='{ &quot;type&quot;: &quot;FeatureCollection&quot;, &quot;features&quot;: [ { &quot;type&quot;: &quot;Feature&quot;, &quot;id&quot;: 1, &quot;properties&quot;: { &quot;popup&quot;: &quot;reverse - copenhagen international poetry festival (dnk), copenhagen, denmark&quot;, &quot;editable&quot;: true }, &quot;geometry&quot;: { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ 12.55568, 55.69078 ] } }, { &quot;type&quot;: &quot;Feature&quot;, &quot;id&quot;: 2, &quot;properties&quot;: { &quot;popup&quot;: &quot;hoergeREDE (aut), graz, austria&quot; }, &quot;geometry&quot;: { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ 15.4382918, 47.0708101 ] } }, { &quot;type&quot;: &quot;Feature&quot;, &quot;id&quot;: 3, &quot;properties&quot;: { &quot;popup&quot;: &quot;sarajevo days of poetry (bih), sarajevo, bosnia&quot; }, &quot;geometry&quot;: { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ 18.3886134, 43.8514981 ] } } ]}'&gt;&lt;/div&gt; 
+    </pre>
+
   </body>
 </html>
