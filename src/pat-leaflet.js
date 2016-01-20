@@ -30,7 +30,8 @@
             patterns.L.geosearch, patterns.L.geosearch.bing,
             patterns.L.geosearch.esri, patterns.L.geosearch.google,
             patterns.L.geosearch.openstreetmap,
-            patterns.L.markercluster, patterns.L.awesomemarkers);
+            patterns.L.markercluster, patterns.L.awesomemarkers,
+            patterns.L.locatecontrol, patterns.L.minimap, patterns.L.sleep);
     }
 }(this, function($, Base, registry, Parser, logger, L) {
     "use strict";
