@@ -109,11 +109,6 @@
                 }
             }
 
-            // Minimap
-            if (options.minimap) {
-                var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik"), {toggleDisplay: true, mapOptions: {sleep: false}}).addTo(map);
-            }
-
             // Layers
             // Must be an array
             if ($.isArray(options.map_layers)) {
@@ -195,6 +190,11 @@
                     add_marker_callback: add_marker_callback.bind(this)
                 });
                 map.addControl(addmarker);
+            }
+
+            // Minimap
+            if (options.minimap) {
+                var minimap = new L.Control.MiniMap(L.tileLayer.provider("OpenStreetMap.Mapnik"), {toggleDisplay: true, mapOptions: {sleep: false}}).addTo(map);
             }
 
             if (options.editable) {
