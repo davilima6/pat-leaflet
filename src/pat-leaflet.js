@@ -7,19 +7,19 @@
             "pat-parser",
             "pat-logger",
             "leaflet",
-            "L.fullscreen",
-            "L.providers",
-            "L.geosearch",
-            "L.geosearch.bing",
-            "L.geosearch.esri",
-            "L.geosearch.google",
-            "L.geosearch.openstreetmap",
-            "L.markercluster",
-            "L.awesomemarkers",
-            "L.locatecontrol",
-            "L.minimap",
-            "L.sleep",
-            "L.simplemarkers"
+            "leaflet-fullscreen",
+            "leaflet-providers",
+            "leaflet-geosearch",
+            "leaflet-geosearch-bing",
+            "leaflet-geosearch-esri",
+            "leaflet-geosearch-google",
+            "leaflet-geosearch-openstreetmap",
+            "leaflet-markercluster",
+            "leaflet-awesomemarkers",
+            "leaflet-locatecontrol",
+            "leaflet-minimap",
+            "leaflet-sleep",
+            "leaflet-simplemarkers"
         ], function() {
             return factory.apply(this, arguments);
         });
@@ -27,13 +27,13 @@
         // If require.js is not available, you'll need to make sure that these
         // global variables are available.
         factory($, patterns.Base, patterns, patterns.Parser, patterns.logger,
-            patterns.Leaflet, patterns.L.fullscreen, patterns.L.providers,
-            patterns.L.geosearch, patterns.L.geosearch.bing,
-            patterns.L.geosearch.esri, patterns.L.geosearch.google,
-            patterns.L.geosearch.openstreetmap,
-            patterns.L.markercluster, patterns.L.awesomemarkers,
-            patterns.L.locatecontrol, patterns.L.minimap, patterns.L.sleep,
-            patterns.L.simplemarkers);
+            patterns.Leaflet, patterns.leaflet-fullscreen, patterns.leaflet-providers,
+            patterns.leaflet-geosearch, patterns.leaflet-geosearch-bing,
+            patterns.leaflet-geosearch-esri, patterns.leaflet-geosearch-google,
+            patterns.leaflet-geosearch-openstreetmap,
+            patterns.leaflet-markercluster, patterns.leaflet-awesomemarkers,
+            patterns.leaflet-locatecontrol, patterns.leaflet-minimap, patterns.leaflet-sleep,
+            patterns.leaflet-simplemarkers);
     }
 }(this, function($, Base, registry, Parser, logger, L) {
     "use strict";
