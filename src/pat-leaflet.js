@@ -131,10 +131,36 @@
                 marker_cluster = new L.MarkerClusterGroup();
                 marker_layer = L.geoJson(geojson, {
                     pointToLayer: function(feature, latlng) {
-                        return L.marker(latlng, {
+                        var marker = L.marker(latlng, {
                             icon: this.green_marker,
                             draggable: feature.properties.editable
                         });
+                        marker.on('dragend', function (e) {
+                            var latlng = e.target.getLatLng();
+                            var $latinput = $(feature.properties.latinput);
+                            var $lnginput = $(feature.properties.lnginput);
+                            if ($latinput.length) {
+                              $latinput.val(latlng.lat);
+                            }
+                            if ($lnginput.length) {
+                              $lnginput.val(latlng.lng);
+                            }
+                        });
+                        if (feature.properties.latinput) {
+                          $(feature.properties.latinput).on('change', function (e) {
+                            var latlng = marker.getLatLng();
+                            marker.setLatLng({lat: $(e.target).val(), lng: latlng.lng});
+                            // TODO: fit bounds
+                          });
+                        }
+                        if (feature.properties.lnginput) {
+                          $(feature.properties.lnginput).on('change', function (e) {
+                            var latlng = marker.getLatLng();
+                            marker.setLatLng({lat: latlng.lat, lng: $(e.target).val()});
+                            // TODO: fit bounds
+                          });
+                        }
+                        return marker;
                     }.bind(this),
                     onEachFeature: this.bind_popup.bind(this),
                 });
@@ -203,8 +229,8 @@
                         map.removeLayer(marker_cluster);
                     }
                     var coords = e.Location;
-                    this.update_inputs(coords.Y, coords.X);
-                    this.bind_draggable_marker(e.Marker);
+                    //this.update_inputs(coords.Y, coords.X);
+                    //this.bind_draggable_marker(e.Marker);
                 });
             }
 
@@ -246,6 +272,7 @@
             icon: "circle"
         }),
 
+        /*
         update_inputs: function(lat, lng) {
             $(this.options.input_latitude_selector).attr("value", lat);
             $(this.options.input_longitude_selector).attr("value", lng);
@@ -257,6 +284,7 @@
                 this.update_inputs(coords.lat, coords.lng);
             });
         },
+        */
 
         create_markers: function(geopoints, editable) {
             // return MarkerClusterGroup from geopoints
@@ -272,9 +300,9 @@
                 if (geopoint.popup) {
                     marker.bindPopup(geopoint.popup);
                 }
-                if (editable) {
-                    this.bind_draggable_marker(marker);
-                }
+                //if (editable) {
+                //    this.bind_draggable_marker(marker);
+                //}
                 markers.addLayer(marker);
             }
             return markers;
