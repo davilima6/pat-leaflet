@@ -136,6 +136,7 @@
                             draggable: feature.properties.editable
                         });
                         marker.on('dragend', function (e) {
+                            // UPDATE INPUTS ON MARKER MOVE
                             var latlng = e.target.getLatLng();
                             var $latinput = $(feature.properties.latinput);
                             var $lnginput = $(feature.properties.lnginput);
@@ -147,6 +148,7 @@
                             }
                         });
                         if (feature.properties.latinput) {
+                          // UPDATE MARKER ON LATITUDE CHANGE
                           $(feature.properties.latinput).on('change', function (e) {
                             var latlng = marker.getLatLng();
                             marker.setLatLng({lat: $(e.target).val(), lng: latlng.lng});
@@ -154,6 +156,7 @@
                           });
                         }
                         if (feature.properties.lnginput) {
+                          // UPDATE MARKER ON LONGITUDE CHANGE
                           $(feature.properties.lnginput).on('change', function (e) {
                             var latlng = marker.getLatLng();
                             marker.setLatLng({lat: latlng.lat, lng: $(e.target).val()});
@@ -285,28 +288,6 @@
             });
         },
         */
-
-        create_markers: function(geopoints, editable) {
-            // return MarkerClusterGroup from geopoints
-            // geopoints = [{lat: NUMBER, lng: NUMBER, popup: STRING}]
-            var markers = new L.MarkerClusterGroup();
-            for (var i = 0, size = geopoints.length; i < size; i++) {
-                var geopoint = geopoints[i],
-                    marker;
-                marker = new L.Marker([geopoint.lat, geopoint.lng], {
-                    icon: this.green_marker,
-                    draggable: editable
-                });
-                if (geopoint.popup) {
-                    marker.bindPopup(geopoint.popup);
-                }
-                //if (editable) {
-                //    this.bind_draggable_marker(marker);
-                //}
-                markers.addLayer(marker);
-            }
-            return markers;
-        }
 
     });
 }));
