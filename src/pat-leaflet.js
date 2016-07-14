@@ -82,11 +82,12 @@
             var options = this.options = parser.parse(this.$el);
 
             var baseLayers,
-                geojson,
-                marker_cluster,
-                marker_layer,
                 bounds,
-                geosearch;
+                geojson,
+                geosearch,
+                main_marker,
+                marker_cluster,
+                marker_layer;
 
             // MAP INIT
             var map = this.map = new L.Map(this.$el[0], {
@@ -135,6 +136,11 @@
                             icon: this.green_marker,
                             draggable: feature.properties.editable
                         });
+                        if (! main_marker || feature.properties.main) {
+                          // Set main marker. This is the one, which is used
+                          // for setting the search result marker.
+                          main_marker = marker;
+                        }
                         marker.on('dragend', function (e) {
                             // UPDATE INPUTS ON MARKER MOVE
                             var latlng = e.target.getLatLng();
@@ -194,15 +200,23 @@
 
                 // GEOSEARCH
                 geosearch = new L.Control.GeoSearch({
-                    showMarker: true,
+                    showMarker: typeof main_marker === 'undefined',
                     draggable: true,
                     provider: provider
                 });
                 geosearch.addTo(map);
 
                 map.on("geosearch_showlocation", function(e) {
-                    e.Marker.setIcon(this.red_marker);
-                    this.bind_popup({properties: {editable: true, popup: "New Marker"}}, e.Marker).bind(this);
+                    if (main_marker) {
+                      var latlng = {lat: e.Location.Y, lng: e.Location.X};
+                      marker_cluster.removeLayer(main_marker);
+                      main_marker.setLatLng(latlng).update();
+                      marker_cluster.addLayer(main_marker);
+                      map.fitBounds([latlng]);
+                    } else {
+                      e.Marker.setIcon(this.red_marker);
+                      this.bind_popup({properties: {editable: true, popup: "New Marker"}}, e.Marker).bind(this);
+                    }
                 }.bind(this));
 
             }
@@ -291,3 +305,4 @@
 
     });
 }));
+
