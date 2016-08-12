@@ -6,3 +6,11 @@
      * thus this. */
     font-family: FontAwesome !important;
 }
+
+/* Make Leaflet geosearch robust against bootstrap */
+.leaflet-control-geosearch form input {
+    box-shadow: none;
+    transition: none;
+    height: auto;
+    line-height: inherit;
+}
