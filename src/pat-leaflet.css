@@ -1,1 +1,8 @@
 .pat-leaflet { min-height: 400px; }
+
+.fa:before {
+    /* awesome markers use FontAwesome but class icon-white per default.
+     * plone is overloading icon-* with fontello.
+     * thus this. */
+    font-family: FontAwesome !important;
+}
